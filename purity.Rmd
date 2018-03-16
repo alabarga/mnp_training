@@ -1,0 +1,44 @@
+---
+title: "tumor purity estimation"
+author: "Martin Sill"
+date: "3/16/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##### TCGA data
+ABSOLUTE purity values for the TCGA data analysed in 
+"Molecular Profiling Reveals Biologically Discrete Subsets and Pathways of Progression in Diffuse Glioma" (Ceccarelli et al., 2016)
+are available at <http://www.cell.com/cms/attachment/2045372863/2056783242/mmc2.xlsx>.
+The normalized methylation data is available at <https://portal.gdc.cancer.gov/>
+
+
+```{r cars}
+rm(list=ls())
+library(randomForest)
+
+load("tcga_ceccarelli_2016.RData")
+ls()
+betas[1:5,1:5]
+df$Case[1:5]
+df$ABSOLUTE.purity[1:5]
+
+# feature selection  
+rf <- randomForest(df$ABSOLUTE.purity,x=t(betas),ntree = 100)
+oo <- order(rf$importance,decreasing = T)
+# train final rf model
+rf <- randomForest(df$ABSOLUTE.purity,x=t(betas[oo[1:1000],]),ntree = 500)  
+
+rf
+```
+
+```{r pressure, echo=FALSE}
+# plot out of bag error
+plot(rf$y,y=rf$predicted,pch=16,xlab="Absolute purity",ylab="RF predicted (oob)",ylim=c(0,1),xlim=c(0,1))
+abline(0,1,col="red")
+legend("topleft",legend=paste0("MSE=",round(rf$mse[500],5)))
+```
+
