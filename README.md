@@ -28,8 +28,8 @@ Performs nested cross-validation and stores the results in `./CV`
 ```
 calibration.R
 ```
-Evaluates the results of the cross validation and fits the calibration model that is stored in `./results`.
-Compiles a final report in `CVresults.html`.
+Evaluates the results of the cross validation and fits the calibration model that is stored in `./results` and
+compiles a final report showing classifier performamce metrics `CVresults.html`.
 
 ##### tumor purity estimation
 
