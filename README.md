@@ -28,6 +28,6 @@ Compiles a final report in `CVresults.html`.
 
 ##### tumor purity estimation
 
-To train a Random Forest regression model that predicts ABOLUTE purity of TCGA brain tumor samples, see `purity.html` or 
+To train a Random Forest regression model that predicts ABSOLUTE purity of TCGA brain tumor samples, see `purity.html` or 
 `purity.Rmd`
 
