@@ -1,6 +1,11 @@
 # mnp_training
 
-Collection of scripts used to train and validate the classifier presented in [DNA methylation-based classification of central nervous system tumours](https://www.nature.com/articles/nature26000).
+Collection of scripts used to train and validate the classifier presented in
+
+[DNA methylation-based classification of central nervous system tumours](https://www.nature.com/articles/nature26000).
+
+
+
 
 ##### classifier training and cross validation
 
